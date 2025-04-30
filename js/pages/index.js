@@ -1,4 +1,4 @@
-import { products } from "../main.js";
+import { apiGetProducts } from "../api/product.js";
 
 // Hämta ut div-listan som finns i index.html för rekommenderade produkter
 const recommendedProductListElement = document.getElementById(
@@ -11,11 +11,15 @@ const featuredProductListElement = document.getElementById(
 
 // Denna funktion körs när index.html laddas in för att dynamiskt rendera produkter
 function setupIndexPage() {
-  // Fyll featured listan med produkter
-  fillProductList(featuredProductListElement, products);
+  // Ladda in alla produkter från API:et och
+  // lägg in dem på sidan när vi väl har fått tillbaka responsen
+  apiGetProducts().then((products) => {
+    // Fyll featured listan med produkter
+    fillProductList(featuredProductListElement, products);
 
-  // Fyll recommended listan med produkter
-  fillProductList(recommendedProductListElement, products);
+    // Fyll recommended listan med produkter
+    fillProductList(recommendedProductListElement, products);
+  });
 }
 
 // Ritar ut produkter (products) inom ett visst element (element)

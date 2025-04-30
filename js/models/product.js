@@ -1,13 +1,9 @@
-// En id-räknare för produkter
-// Varje produkt får ett eget id som räknas upp: 0, 1, 2, 3 osv
-let PRODUCT_ID_COUNTER = 0;
-
 // En klass-modell för alla produkter som visas på sidan
 // Den hjälper oss att förstå strukturen på produkt-objekten.
 // Vi bakar även in några användbara funktioner, som 'createCardElement'
 export class Product {
-  constructor(title, category, thumbnailUrl, images) {
-    this.id = PRODUCT_ID_COUNTER++;
+  constructor(id, title, category, thumbnailUrl, images) {
+    this.id = id;
     this.title = title;
     this.category = category;
     this.thumbnailUrl = thumbnailUrl;
