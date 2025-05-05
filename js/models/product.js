@@ -1,3 +1,6 @@
+import { apiAddProductToCart, apiGetCart } from "../api/cart.js";
+import { showCartItems } from "../pages/cart.js";
+
 // En klass-modell för alla produkter som visas på sidan
 // Den hjälper oss att förstå strukturen på produkt-objekten.
 // Vi bakar även in några användbara funktioner, som 'createCardElement'
@@ -112,6 +115,10 @@ export class Product {
     title.textContent = this.title;
     description.textContent = "Lorem ipsum";
     cartButton.textContent = "Add to cart";
+
+    cartButton.addEventListener("click", () => {
+      apiAddProductToCart(this).then(showCartItems).catch(console.error);
+    });
 
     infoContainer.append(title, description, cartButton);
 

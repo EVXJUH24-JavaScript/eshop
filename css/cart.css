@@ -13,3 +13,8 @@
   transition: 1s;
   transform: translateX(40rem);
 }
+
+.cart-item {
+  display: flex;
+  gap: 1rem;
+}
